@@ -1,45 +1,60 @@
-# springboot-todo-manager
-A full-stack Spring Boot To-Do application with user authentication, intelligent status updates (In-Progress / Pending / Completed), task editing, dashboard analytics, and pagination for large task lists.
+# 📌 Spring Boot To-Do Manager
 
-📝 Overview
-This is a simple and interactive To-Do Management Application built using Spring Boot, Thymeleaf, and MySQL.
-Users can register, log in, create tasks, edit tasks, update task statuses, and view all tasks with pagination.
+A full-stack **Spring Boot To-Do Application** with user authentication, task management, intelligent status updates (In-Progress / Pending / Completed), dashboard analytics, and pagination.
 
+---
 
-The application also features:
+## 📝 Overview
 
-✔ User authentication
-✔ Task categorization (Completed / Pending / In-Progress)
-✔ Automatic task status update based on due date
-✔ Pagination in Dashboard & Tasks Page
-✔ Responsive UI with icons and sidebar navigation
+This is a simple and interactive **To-Do Management Application** built using:
 
-🚀 Features
+- Spring Boot  
+- Thymeleaf  
+- MySQL  
+- HTML/CSS  
+- FontAwesome  
 
-🔐 User Authentication
-   Login / Logout
-   Session-based user tracking
-   
-📝 Task Management
-   Add new tasks
-   Edit existing tasks
-   Auto-update task status:
-       In Progress → For today & future tasks
-       Pending → Automatically becomes pending if the date has passed
-       Completed → When marked by the user
+Users can:
 
-📊 Dashboard
-    Total Tasks
-    Completed Tasks
-    Pending Tasks
-    Recent tasks table
-    Pagination support
+✔ Register and Login  
+✔ Create tasks  
+✔ Edit tasks  
+✔ View all tasks  
+✔ Automatic task status update  
+✔ Paginated task listing  
+✔ Beautiful UI with icons & sidebar  
 
-📂 Project Structure
+---
 
+## 🚀 Features
+
+### 🔐 User Authentication
+- User Login / Logout  
+- Session-based authentication  
+
+### 📝 Task Management
+- Add new tasks  
+- Edit tasks  
+- Auto-update task status:
+  - **In Progress** → Today & future dates  
+  - **Pending** → Automatically when date is past  
+  - **Completed** → When marked by user  
+
+### 📊 Dashboard Analytics
+- Total tasks  
+- Completed tasks  
+- Pending tasks  
+- Recent tasks  
+- Pagination  
+
+---
+
+## 📁 Project Structure
+
+```
 src/
  ├── main/
- │   ├── java/com/springboot
+ │   ├── java/com/springboot/
  │   │      ├── controller/
  │   │      ├── entity/
  │   │      ├── repository/
@@ -51,47 +66,59 @@ src/
  │          │       ├── addTask.html
  │          │       ├── editTask.html
  │          └── application.properties
+```
 
+---
 
-🛠️ Technologies Used
-    Java 17+
-    Spring Boot
-    Spring MVC
-    Spring Data JPA
-    Hibernate
-    MySQL
-    Thymeleaf
-    HTML / CSS / FontAwesome
+## 🛠️ Technologies Used
 
-⚙️ Setup Instructions
+- Java 17+
+- Spring Boot  
+- Spring MVC  
+- Spring Data JPA  
+- Hibernate  
+- MySQL  
+- Thymeleaf  
+- HTML / CSS  
+- Font Awesome Icons  
 
-1️⃣ Clone the Repository
+---
 
+## ⚙️ Setup Instructions
+
+### **1️⃣ Clone the Repository**
+
+```bash
 git clone https://github.com/Saurabhh0000/springboot-todo-manager.git
 cd springboot-todo-manager
+```
 
-2️⃣ Configure Database
-    
-  Create a MySQL database:
-   CREATE DATABASE todo_app;
+### **2️⃣ Configure Database**
 
-Update application.properties:
+Create your MySQL database:
 
+```sql
+CREATE DATABASE todo_app;
+```
+
+Now update **application.properties**:
+
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/todo_app
-spring.datasource.username=root   
+spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
+```
 
-3️⃣ Run the Application
-   mvn spring-boot:run
+### **3️⃣ Run the Application**
 
-4️⃣ Visit in Browser
+```bash
+mvn spring-boot:run
+```
 
-http://localhost:8080/login
+### **4️⃣ Open in Browser**
 
-
-
-
+👉 http://localhost:8080/login  
