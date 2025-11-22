@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>All Tasks | To-Do App</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #eef1f7;
+        padding: 30px;
+        margin: 0;
+    }
+
+    /* Back Button */
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 16px;
+        background: #2575fc;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.3s;
+        margin-bottom: 20px;
+    }
+
+    .back-btn i {
+        margin-right: 8px;
+    }
+
+    .back-btn:hover {
+        transform: scale(1.05);
+        background: #0d5ae0;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background: #2575fc;
+        color: white;
+        padding: 14px;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    td {
+        padding: 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    tr:hover {
+        background: #f9faff;
+        transition: 0.3s;
+    }
+
+    /* Status Badge */
+    .status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        color: white;
+        font-weight: 600;
+        font-size: 13px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .in-progress { background: #ff9800; }
+    .pending { background: #e91e63; }
+    .completed { background: #4caf50; }
+
+    /* Edit Button */
+    .edit-btn {
+        padding: 6px 12px;
+        background: #2575fc;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .edit-btn:hover {
+        background: #0d5ae0;
+        transform: scale(1.05);
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Back Button -->
+<a class="back-btn" href="/dashboard">
+    <i class="fas fa-arrow-left"></i> Back to Dashboard
+</a>
+
+<h2><i class="fas fa-tasks"></i> Your All Tasks</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th><i class="fas fa-file-alt"></i> Task</th>
+            <th><i class="fas fa-align-left"></i> Description</th>
+            <th><i class="fas fa-calendar"></i> Date</th>
+            <th><i class="fas fa-clock"></i> Time</th>
+            <th><i class="fas fa-info-circle"></i> Status</th>
+            <th> Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="t : ${tasks}">
+            <td th:text="${t.taskId}"></td>
+            <td th:text="${t.name}"></td>
+            <td th:text="${t.description}"></td>
+			<td th:text="${#temporals.format(t.date, 'dd/MM/yyyy')}"></td>
+            <td th:text="${t.timings}"></td>
+
+            <!-- Color-coded status -->
+            <td>
+				<span th:classappend="${t.status}=='In Progress' ? 'status in-progress' :
+				                      (${t.status}=='Pending' ? 'status pending' : 'status completed')"
+				      th:text="${t.status}">
+				</span>
+
+            </td>
+
+            <td>
+                <a th:href="@{'/task/edit/' + ${t.taskId}}" class="edit-btn">
+                   <i class="fas fa-edit"></i> Edit
+                </a>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+<!-- PAGINATION -->
+	<div style="text-align:center; margin-top:20px;">
+
+	    <!-- Prev -->
+	    <a th:if="${currentPage > 0}"
+	       th:href="@{/tasks(page=${currentPage - 1})}"
+	       style="padding:8px 14px; background:#2575fc; color:white;
+	       text-decoration:none; border-radius:5px; margin-right:10px;">
+	       ‹ Prev
+	    </a>
+
+	    <span style="font-weight:bold;">
+	        Page <span th:text="${currentPage + 1}"></span> of
+	        <span th:text="${totalPages}"></span>
+	    </span>
+
+	    <!-- Next -->
+	    <a th:if="${currentPage + 1 < totalPages}"
+	       th:href="@{/tasks(page=${currentPage + 1})}"
+	       style="padding:8px 14px; background:#2575fc; color:white;
+	       text-decoration:none; border-radius:5px; margin-left:10px;">
+	       Next ›
+	    </a>
+
+	</div>
+
+
+</body>
+</html>
