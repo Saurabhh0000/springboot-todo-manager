@@ -78,7 +78,7 @@ cd springboot-todo-manager
 Update application.properties:
 
 spring.datasource.url=jdbc:mysql://localhost:3306/todo_app
-spring.datasource.username=root
+spring.datasource.username=root   
 spring.datasource.password=YOUR_PASSWORD
 
 spring.jpa.hibernate.ddl-auto=update
