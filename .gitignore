@@ -1,0 +1,52 @@
+# Maven target directory
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDEs and editors
+## IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+## Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+## VS Code
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Spring Boot
+application.properties
+application.yml
+
+# Build
+*.class
+*.jar
+*.war
+*.ear
+
+# Node (if frontend exists)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.*
